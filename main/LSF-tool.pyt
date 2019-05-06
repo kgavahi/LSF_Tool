@@ -1,10 +1,9 @@
 ##############################################################################################
-#                                         LSF-tool                                           #
-##                                      By Kayhan Gavahi                                    ##
-###                                 Last Update : 05/03/2019                               ###
+#                                          LSF-tool                                          #
+##                                     By Kayhan Gavahi                                     ##
+###                                Last Update : 05/03/2019                                ###
 ##############################################################################################
 import arcpy
-import math
 from arcpy.sa import *
 import shutil
 
@@ -239,7 +238,7 @@ class LSF_tool(object):
 
         # Process: Map Algebra Direction 2
         messages.addMessage("Process: UP_slope_2 ... ")	
-        atan = ATan( (Raster(shift_2) - Raster(input_DEM)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(shift_2) - Raster(input_DEM)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         UP_slope_2 = Con(Raster(f_dir_2) == 2,1,0) * atan * 180.0/3.14159265358979323
 
 	
@@ -253,7 +252,7 @@ class LSF_tool(object):
 
         # Process: Map Algebra Direction 8
         messages.addMessage("Process: UP_slope_8 ... ")	
-        atan = ATan( (Raster(shift_8) - Raster(input_DEM)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(shift_8) - Raster(input_DEM)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         UP_slope_8 = Con(Raster(f_dir_8) == 8,1,0) * atan * 180.0/3.14159265358979323
 
 
@@ -267,7 +266,7 @@ class LSF_tool(object):
 
         # Process: Map Algebra Direction 32
         messages.addMessage("Process: UP_slope_32 ... ")	
-        atan = ATan( (Raster(shift_32) - Raster(input_DEM)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(shift_32) - Raster(input_DEM)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         UP_slope_32 = Con(Raster(f_dir_32) == 32,1,0) * atan * 180.0/3.14159265358979323
 
 
@@ -281,7 +280,7 @@ class LSF_tool(object):
 
         # Process: Map Algebra Direction 128
         messages.addMessage("Process: UP_slope_128 ... ")	
-        atan = ATan( (Raster(shift_128) - Raster(input_DEM)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(shift_128) - Raster(input_DEM)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         UP_slope_128 = Con(Raster(f_dir_128) == 128,1,0) * atan * 180.0/3.14159265358979323
 
 		# Process: Cell Statistics
@@ -293,25 +292,25 @@ class LSF_tool(object):
         atan = ATan( (Raster(input_DEM) - Raster(shift_16)) / float(CellSize_pos) )
         con1 = Con(f_dir == 1,1,0) * atan * 180.0/3.14159265358979323
 
-        atan = ATan( (Raster(input_DEM) - Raster(shift_32)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(input_DEM) - Raster(shift_32)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         con2 = Con(f_dir == 2,1,0) * atan * 180.0/3.14159265358979323	
 
         atan = ATan( (Raster(input_DEM) - Raster(shift_64)) / float(CellSize_pos) )
         con4 = Con(f_dir == 4,1,0) * atan * 180.0/3.14159265358979323
 
-        atan = ATan( (Raster(input_DEM) - Raster(shift_128)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(input_DEM) - Raster(shift_128)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         con8 = Con(f_dir == 8,1,0) * atan * 180.0/3.14159265358979323
 
         atan = ATan( (Raster(input_DEM) - Raster(shift_1)) / float(CellSize_pos) )
         con16 = Con(f_dir == 16,1,0) * atan * 180.0/3.14159265358979323
 
-        atan = ATan( (Raster(input_DEM) - Raster(shift_2)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(input_DEM) - Raster(shift_2)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         con32 = Con(f_dir == 32,1,0) * atan * 180.0/3.14159265358979323
 
         atan = ATan( (Raster(input_DEM) - Raster(shift_4)) / float(CellSize_pos) )
         con64 = Con(f_dir == 64,1,0) * atan * 180.0/3.14159265358979323
 
-        atan = ATan( (Raster(input_DEM) - Raster(shift_8)) / (float(CellSize_pos) * math.sqrt(2)) )
+        atan = ATan( (Raster(input_DEM) - Raster(shift_8)) / (float(CellSize_pos) * 1.4142135623730950488016887242097) )
         con128 = Con(f_dir == 128,1,0) * atan * 180.0/3.14159265358979323	
 
         DW_slope = con1 + con2 + con4 + con8 + con16 + con32 + + con64 + con128
